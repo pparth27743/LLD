@@ -1,6 +1,6 @@
 package StrategyDesignPattern.withoutPattern;
 
-public class Main {
+public class WithOutStrategyMain {
     public static void main(String[] args) {
          new NormalVehicle().drive();
          new PassengerVehicle().drive();

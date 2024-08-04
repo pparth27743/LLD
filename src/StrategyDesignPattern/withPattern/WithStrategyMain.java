@@ -3,7 +3,7 @@ package StrategyDesignPattern.withPattern;
 import StrategyDesignPattern.withPattern.Strategy.SimpleStrategy;
 import StrategyDesignPattern.withPattern.Strategy.SpecialStrategy;
 
-public class Main {
+public class WithStrategyMain {
 
     public static void main(String[] args) {
         new NormalVehicle(new SpecialStrategy()).drive();
