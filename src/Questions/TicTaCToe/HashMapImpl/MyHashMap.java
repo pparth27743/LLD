@@ -58,6 +58,13 @@ public class MyHashMap<K, V> {
             prevEntry.next = new Entry(key, value);
             this.currentSize++;
         }
+        if(needToExpand()) {
+            expand();
+        }
+    }
+
+    private boolean needToExpand() {
+        return (((float)currentSize)/hashTable.length) > DEFAULT_LOAD_FACTOR;
     }
 
     /*
@@ -110,6 +117,46 @@ public class MyHashMap<K, V> {
         return null;
     }
 
+    /*
+    - double the hashtable size
+    - iterate over old hashTable and add (K,V) in new hashTable
+     */
+    private void expand() {
+        if(2*hashTable.length > MAXIMUM_CAPACITY) {
+            System.out.println("Capacity Can't further be expanded");
+            return;
+        }
+
+        Entry[] newHashTable = new Entry[2*hashTable.length];
+        for(int i=0; i<hashTable.length; i++) {
+            Entry curr = hashTable[i];
+            while(curr != null) {
+                putToNewHashTable((K)curr.key, (V)curr.value, newHashTable);
+                curr = curr.next;
+            }
+        }
+        this.hashTable = newHashTable;
+    }
+
+    private void putToNewHashTable(K key, V value, Entry[] hashTable) {
+        int hashValue = key.hashCode() % hashTable.length;
+        if(hashTable[hashValue] == null) {
+            Entry entry = new Entry(key, value);
+            hashTable[hashValue] = entry;
+        }
+        else {
+            Entry curr = hashTable[hashValue], prevEntry = null;
+            while(curr != null) {
+                if(curr.key.equals(key)) {
+                    curr.value = value;
+                    return;
+                }
+                prevEntry = curr;
+                curr = curr.next;
+            }
+            prevEntry.next = new Entry(key, value);
+        }
+    }
 
     private int getTableSize(int capacity) {
         int n = capacity - 1;
