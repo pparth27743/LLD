@@ -20,6 +20,11 @@ public class HashMapMain {
         System.out.println(map.remove(1));
         System.out.println(map.size());
 
+        // custome implementation of entrySet Method
+        for(MyHashMap.Entry entry : map.entrySet()) {
+            System.out.println(entry.key + " -> " + entry.value);
+        }
+
     }
 
 }

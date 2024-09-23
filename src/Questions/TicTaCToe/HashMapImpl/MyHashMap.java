@@ -1,5 +1,8 @@
 package Questions.TicTaCToe.HashMapImpl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MyHashMap<K, V> {
 
     class Entry<K,V> { // provide K,V as generic arg in here
@@ -28,6 +31,22 @@ public class MyHashMap<K, V> {
     MyHashMap(int capacity) {
         this.hashTable = new Entry[getTableSize(capacity)];
         this.currentSize = 0;
+    }
+
+
+    public Set<Entry<K, V>> entrySet() {
+        Set<Entry<K,V>> set = new HashSet<>();
+
+        for(int i=0; i<hashTable.length; i++) {
+            if(hashTable[i] != null) {
+                Entry<K,V> curr = hashTable[i];
+                while(curr != null) {
+                    set.add(curr);
+                    curr = curr.next;
+                }
+            }
+        }
+        return set;
     }
 
     /* Notes:
