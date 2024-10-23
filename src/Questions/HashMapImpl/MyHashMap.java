@@ -1,4 +1,4 @@
-package Questions.TicTaCToe.HashMapImpl;
+package Questions.HashMapImpl;
 
 import java.util.HashSet;
 import java.util.Set;

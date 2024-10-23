@@ -1,4 +1,6 @@
-package Questions.TicTaCToe.HashMapImpl;
+package Questions.HashMapImpl;
+
+import java.util.LinkedList;
 
 public class HashMapMain {
 
@@ -25,6 +27,8 @@ public class HashMapMain {
             System.out.println(entry.key + " -> " + entry.value);
         }
 
+
+        new LinkedList<>()
     }
 
 }
