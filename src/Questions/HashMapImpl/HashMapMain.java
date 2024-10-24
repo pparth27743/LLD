@@ -26,9 +26,6 @@ public class HashMapMain {
         for(MyHashMap.Entry entry : map.entrySet()) {
             System.out.println(entry.key + " -> " + entry.value);
         }
-
-
-        new LinkedList<>()
     }
 
 }
